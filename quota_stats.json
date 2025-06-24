@@ -1,0 +1,17 @@
+{
+  "uploads": [
+    {
+      "video_id": "p2LACw4TAMM",
+      "date": "2025-06-24T16:40:42.745686",
+      "quota_used": 1600
+    },
+    {
+      "video_id": "zWbFuiSmiQA",
+      "date": "2025-06-24T16:43:38.125191",
+      "quota_used": 1600
+    }
+  ],
+  "daily_usage": {
+    "2025-06-24": 3200
+  }
+}

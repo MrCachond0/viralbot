@@ -1,0 +1,56 @@
+# Archivos de entorno y credenciales
+.env
+token.pickle
+token.json
+client_secret.json
+
+# Archivos generados por el bot
+*.mp3
+*.mp4
+temp_text.png
+posts_history.json
+quota_stats.json
+content_config.json
+
+# Logs
+*.log
+bot_scheduler.log
+bot_errors.log
+
+# Archivos de Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Entornos virtuales
+venv/
+ENV/
+env/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Editores
+.vscode/
+.idea/
+*.swp
+*.swo

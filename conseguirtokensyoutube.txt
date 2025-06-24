@@ -1,0 +1,78 @@
+Para obtener:
+
+makefile
+Copy
+Edit
+YOUTUBE_REFRESH_TOKEN=
+YOUTUBE_ACCESS_TOKEN=
+YOUTUBE_CHANNEL_ID=
+Necesitas pasar por el proceso de autenticación OAuth 2.0 con Google para tu cuenta de YouTube. Aquí te explico paso a paso cómo obtener cada uno:
+
+🧩 1. Crea un proyecto en Google Cloud Console
+Ve a: https://console.cloud.google.com/
+
+Crea un nuevo proyecto.
+
+Activa la YouTube Data API v3 (menú lateral → "APIs & Services" → "Library" → busca YouTube Data API v3 → Activa).
+
+Ve a "Credentials" → “Create Credentials” → OAuth 2.0 Client ID.
+
+🧩 2. Crea el OAuth 2.0 Client ID
+Elige "Desktop App" como tipo de aplicación.
+
+Anota:
+
+CLIENT_ID
+
+CLIENT_SECRET
+
+🧩 3. Autoriza tu cuenta y consigue el REFRESH_TOKEN y ACCESS_TOKEN
+Puedes hacerlo con un script de Python que abre el navegador para autorizar. Aquí uno que puedes usar directamente:
+
+🔧 Script rápido en Python:
+python
+Copy
+Edit
+from google_auth_oauthlib.flow import InstalledAppFlow
+from google.auth.transport.requests import Request
+import pickle
+
+# SCOPES necesarias para subir videos
+SCOPES = ["https://www.googleapis.com/auth/youtube.upload"]
+
+# Paso 1: flujo de autorización
+flow = InstalledAppFlow.from_client_secrets_file(
+    'client_secret.json', SCOPES)
+creds = flow.run_local_server(port=0)
+
+# Paso 2: guardar el token y refrescarlo automáticamente
+with open("token.pickle", "wb") as token:
+    pickle.dump(creds, token)
+
+print("ACCESS TOKEN:", creds.token)
+print("REFRESH TOKEN:", creds.refresh_token)
+Notas:
+
+Necesitas un archivo client_secret.json que descargas desde Google Console después de crear el OAuth client.
+
+Te pedirá que inicies sesión con tu cuenta de YouTube y autorices el acceso.
+
+🧩 4. Obtener el YOUTUBE_CHANNEL_ID
+Una vez autenticado, puedes obtener el ID del canal con esta petición:
+
+bash
+Copy
+Edit
+curl \
+  'https://www.googleapis.com/youtube/v3/channels?part=id&mine=true' \
+  --header "Authorization: Bearer YOUR_ACCESS_TOKEN"
+O desde Python:
+
+python
+Copy
+Edit
+from googleapiclient.discovery import build
+
+youtube = build("youtube", "v3", credentials=creds)
+response = youtube.channels().list(part="id", mine=True).execute()
+print("CHANNEL ID:", response["items"][0]["id"])

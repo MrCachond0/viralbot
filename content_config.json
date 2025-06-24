@@ -1,0 +1,36 @@
+{
+  "active_subreddits": [
+    "Showerthoughts",
+    "LifeProTips",
+    "AskReddit",
+    "explainlikeimfive",
+    "todayilearned",
+    "YouShouldKnow",
+    "TrueOffMyChest",
+    "confessions",
+    "unpopularopinion",
+    "TIFU"
+  ],
+  "subreddit_weights": {
+    "Showerthoughts": 10,
+    "LifeProTips": 10,
+    "AskReddit": 10,
+    "explainlikeimfive": 10,
+    "todayilearned": 10,
+    "YouShouldKnow": 10,
+    "TrueOffMyChest": 10,
+    "confessions": 10,
+    "unpopularopinion": 10,
+    "TIFU": 10
+  },
+  "time_filters": [
+    "day",
+    "week"
+  ],
+  "time_filter_weights": {
+    "day": 70,
+    "week": 30
+  },
+  "post_count": 5,
+  "last_updated": "2025-06-24T16:40:17.007688"
+}
